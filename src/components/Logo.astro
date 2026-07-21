@@ -1,0 +1,29 @@
+---
+import { siteConfig } from "../config";
+
+interface Props {
+	class?: string;
+}
+
+const className = Astro.props.class ?? "logo-mark";
+---
+
+<svg class={className} viewBox="0 0 128 128" role="img" aria-label={siteConfig.name}>
+	<path
+		d="M34 72h32c16 0 28-12 28-28"
+		fill="none"
+		stroke="currentColor"
+		stroke-width="11"
+		stroke-linecap="round"
+	/>
+	<path
+		d="M66 72c16 0 28 12 28 28"
+		fill="none"
+		stroke="var(--logo-accent)"
+		stroke-width="11"
+		stroke-linecap="round"
+	/>
+	<circle cx="34" cy="72" r="12" fill="currentColor" />
+	<circle cx="94" cy="42" r="12" fill="var(--logo-warn)" />
+	<circle cx="94" cy="100" r="12" fill="var(--logo-accent)" />
+</svg>
