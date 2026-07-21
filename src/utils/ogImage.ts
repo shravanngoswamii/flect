@@ -1,13 +1,14 @@
 import { Resvg } from "@resvg/resvg-js";
 import satori, { type Font } from "satori";
+import { logoMark } from "../assets/logoMark";
 import { siteConfig } from "../config";
 
-const LOGO_SVG = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
-  <path d="M34 72h32c16 0 28-12 28-28" fill="none" stroke="#f5f4f0" stroke-width="11" stroke-linecap="round"/>
-  <path d="M66 72c16 0 28 12 28 28" fill="none" stroke="#6ee7b7" stroke-width="11" stroke-linecap="round"/>
-  <circle cx="34" cy="72" r="12" fill="#f5f4f0"/>
-  <circle cx="94" cy="42" r="12" fill="#eab308"/>
-  <circle cx="94" cy="100" r="12" fill="#6ee7b7"/>
+const LOGO_SVG = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="${logoMark.viewBox}">
+  <path d="${logoMark.spine}" fill="none" stroke="#f5f4f0" stroke-width="${logoMark.strokeWidth}" stroke-linecap="round"/>
+  <path d="${logoMark.topArm}" fill="none" stroke="#f5f4f0" stroke-width="${logoMark.strokeWidth}" stroke-linecap="round"/>
+  <path d="${logoMark.middleArm}" fill="none" stroke="#f5f4f0" stroke-width="${logoMark.strokeWidth}" stroke-linecap="round"/>
+  <path d="${logoMark.bend}" fill="none" stroke="#6ee7b7" stroke-width="${logoMark.strokeWidth}" stroke-linecap="round"/>
+  <circle cx="${logoMark.dot.cx}" cy="${logoMark.dot.cy}" r="${logoMark.dot.r}" fill="#eab308"/>
 </svg>`;
 
 const LOGO_DATA_URI = `data:image/svg+xml;base64,${Buffer.from(LOGO_SVG).toString("base64")}`;

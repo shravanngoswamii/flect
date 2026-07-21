@@ -1,5 +1,6 @@
 ---
 import { siteConfig } from "../config";
+import { logoMark } from "../assets/logoMark";
 
 interface Props {
 	class?: string;
@@ -8,22 +9,34 @@ interface Props {
 const className = Astro.props.class ?? "logo-mark";
 ---
 
-<svg class={className} viewBox="0 0 128 128" role="img" aria-label={siteConfig.name}>
+<svg class={className} viewBox={logoMark.viewBox} role="img" aria-label={siteConfig.name}>
 	<path
-		d="M34 72h32c16 0 28-12 28-28"
+		d={logoMark.spine}
 		fill="none"
 		stroke="currentColor"
-		stroke-width="11"
+		stroke-width={logoMark.strokeWidth}
 		stroke-linecap="round"
 	/>
 	<path
-		d="M66 72c16 0 28 12 28 28"
+		d={logoMark.topArm}
 		fill="none"
-		stroke="var(--logo-accent)"
-		stroke-width="11"
+		stroke="currentColor"
+		stroke-width={logoMark.strokeWidth}
 		stroke-linecap="round"
 	/>
-	<circle cx="34" cy="72" r="12" fill="currentColor" />
-	<circle cx="94" cy="42" r="12" fill="var(--logo-warn)" />
-	<circle cx="94" cy="100" r="12" fill="var(--logo-accent)" />
+	<path
+		d={logoMark.middleArm}
+		fill="none"
+		stroke="currentColor"
+		stroke-width={logoMark.strokeWidth}
+		stroke-linecap="round"
+	/>
+	<path
+		d={logoMark.bend}
+		fill="none"
+		stroke="var(--logo-accent)"
+		stroke-width={logoMark.strokeWidth}
+		stroke-linecap="round"
+	/>
+	<circle cx={logoMark.dot.cx} cy={logoMark.dot.cy} r={logoMark.dot.r} fill="var(--logo-warn)" />
 </svg>
