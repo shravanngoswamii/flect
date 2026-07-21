@@ -1,0 +1,137 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width"><meta name="description" content="A short checklist for making a freshly cloned Flect site look like yours instead of the demo, in roughly the order you'll actually hit them."><meta name="robots" content="index, follow"><meta name="googlebot" content="index, follow"><meta name="generator" content="Astro v7.1.3"><link rel="canonical" href="https://shravangoswami.com/flect/blog/five-things-to-change-first/"><meta property="og:type" content="article"><meta property="og:site_name" content="Flect"><meta property="og:url" content="https://shravangoswami.com/flect/blog/five-things-to-change-first/"><meta property="og:title" content="Five things to change before you ship | Flect"><meta property="og:description" content="A short checklist for making a freshly cloned Flect site look like yours instead of the demo, in roughly the order you'll actually hit them."><meta property="og:image" content="https://shravangoswami.com/flect/og.png"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Five things to change before you ship | Flect"><meta name="twitter:description" content="A short checklist for making a freshly cloned Flect site look like yours instead of the demo, in roughly the order you'll actually hit them."><meta name="twitter:image" content="https://shravangoswami.com/flect/og.png"><meta name="theme-color" content="#14724b" media="(prefers-color-scheme: light)"><meta name="theme-color" content="#101413" media="(prefers-color-scheme: dark)"><link rel="icon" type="image/svg+xml" href="/flect/favicon.svg"><!-- Umami Analytics — set PUBLIC_UMAMI_WEBSITE_ID to enable, see src/config.ts --><script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"Five things to change before you ship | Flect","description":"A short checklist for making a freshly cloned Flect site look like yours instead of the demo, in roughly the order you'll actually hit them.","url":"https://shravangoswami.com/flect/blog/five-things-to-change-first/"}</script><title>Five things to change before you ship | Flect</title><script>
+			(() => {
+				const key = 'theme';
+				const preferred = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+				const stored = localStorage.getItem(key);
+				document.documentElement.dataset.theme = stored || preferred;
+			})();
+		</script><link rel="stylesheet" href="/flect/_astro/BaseLayout.lNRK4iBa.css"></head><body class="blog-page"><header class="site-header" data-pagefind-ignore><a class="brand" href="/flect/" aria-label="Flect home"><svg class="logo-mark" viewBox="0 0 128 128" role="img" aria-label="Flect"><path d="M40 106 L40 26" fill="none" stroke="currentColor" stroke-width="13" stroke-linecap="round"></path><path d="M40 26 L76 26" fill="none" stroke="currentColor" stroke-width="13" stroke-linecap="round"></path><path d="M40 62 L70 62" fill="none" stroke="currentColor" stroke-width="13" stroke-linecap="round"></path><path d="M76 26 Q98 26 98 48" fill="none" stroke="var(--logo-accent)" stroke-width="13" stroke-linecap="round"></path><circle cx="98" cy="48" r="7" fill="var(--logo-warn)"></circle></svg><span>Flect</span></a><div class="site-search" data-pagefind-ignore data-astro-cid-ac66eqjo><button class="search-trigger" type="button" data-search-open aria-haspopup="dialog" data-astro-cid-ac66eqjo><svg aria-hidden="true" viewBox="0 0 24 24" data-astro-cid-ac66eqjo><path d="m20 20-4.35-4.35m2.35-5.15a7.5 7.5 0 1 1-15 0 7.5 7.5 0 0 1 15 0Z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2" data-astro-cid-ac66eqjo></path></svg><span data-astro-cid-ac66eqjo>Search docs</span></button></div><dialog class="search-modal" data-search-modal aria-label="Search documentation" data-pagefind-ignore data-astro-cid-ac66eqjo><div class="search-panel" data-astro-cid-ac66eqjo><div id="docs-search" data-astro-cid-ac66eqjo></div></div></dialog><script type="module">var e=document.querySelector(`[data-search-open]`),t=document.querySelector(`[data-search-modal]`),n=`/flect/`,r=n.endsWith(`/`)?n.slice(0,-1):n,i=!1,a=()=>new Promise(e=>{if(i){e();return}let t=document.createElement(`link`);t.rel=`stylesheet`,t.href=`${r}/pagefind/pagefind-ui.css`,document.head.appendChild(t);let a=document.createElement(`script`);a.src=`${r}/pagefind/pagefind-ui.js`,a.onload=()=>{new window.PagefindUI({element:`#docs-search`,baseUrl:n,showImages:!1,showSubResults:!0,placeholder:`Search docs…`,excerptLength:15}),i=!0,e()},a.onerror=()=>e(),document.head.appendChild(a)}),o=async()=>{t&&(await a(),t.showModal(),requestAnimationFrame(()=>{t.querySelector(`.pagefind-ui__search-input`)?.focus()}))},s=()=>{t?.open&&t.close(),e instanceof HTMLElement&&e.focus()};e?.addEventListener(`click`,o),document.addEventListener(`docs:open-search`,o),t?.addEventListener(`click`,e=>{e.target===t&&s()}),document.addEventListener(`keydown`,e=>{(e.metaKey||e.ctrlKey)&&e.key.toLowerCase()===`k`&&(e.preventDefault(),o()),e.key===`Escape`&&t?.open&&s()});</script><nav class="top-nav" aria-label="Main navigation"><a href="/flect/docs/">Docs</a><a href="/flect/blog/">Blog</a><a href="/flect/docs/">Get Started</a><a class="nav-heart" href="https://github.com/sponsors/shravanngoswamii" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 1024 1024" class="icon heart-icon" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M927.4 273.5v-95.4h-87.9V82.8h-201v95.3h-87.9v95.4h-78.5v-95.4h-88V82.8H183.2v95.3H95.3v95.4H16.7v190.6h78.6v95.4h75.3v95.3H246v95.3h87.9v95.4h100.5v95.3h153.9v-95.3h100.4v-95.4h88v-95.3H852.1v-95.3h75.3v-95.4h78.5V273.5z" fill="#E02D2D"></path></svg>Support</a><a class="icon-link" href="https://github.com/shravanngoswamii/flect" aria-label="GitHub repository" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 20 20" class="icon github-icon" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><g fill="none" fill-rule="evenodd"><g transform="translate(-140 -7559)" fill="currentColor"><g transform="translate(56 160)"><path d="M94,7399 C99.523,7399 104,7403.59 104,7409.253 C104,7413.782 101.138,7417.624 97.167,7418.981 C96.66,7419.082 96.48,7418.762 96.48,7418.489 C96.48,7418.151 96.492,7417.047 96.492,7415.675 C96.492,7414.719 96.172,7414.095 95.813,7413.777 C98.04,7413.523 100.38,7412.656 100.38,7408.718 C100.38,7407.598 99.992,7406.684 99.35,7405.966 C99.454,7405.707 99.797,7404.664 99.252,7403.252 C99.252,7403.252 98.414,7402.977 96.505,7404.303 C95.706,7404.076 94.85,7403.962 94,7403.958 C93.15,7403.962 92.295,7404.076 91.497,7404.303 C89.586,7402.977 88.746,7403.252 88.746,7403.252 C88.203,7404.664 88.546,7405.707 88.649,7405.966 C88.01,7406.684 87.619,7407.598 87.619,7408.718 C87.619,7412.646 89.954,7413.526 92.175,7413.785 C91.889,7414.041 91.63,7414.493 91.54,7415.156 C90.97,7415.418 89.522,7415.871 88.63,7414.304 C88.63,7414.304 88.101,7413.319 87.097,7413.247 C87.097,7413.247 86.122,7413.234 87.029,7413.87 C87.029,7413.87 87.684,7414.185 88.139,7415.37 C88.139,7415.37 88.726,7417.2 91.508,7416.58 C91.513,7417.437 91.522,7418.245 91.522,7418.489 C91.522,7418.76 91.338,7419.077 90.839,7418.982 C86.865,7417.627 84,7413.783 84,7409.253 C84,7403.59 88.478,7399 94,7399"></path></g></g></g></svg><span>GitHub</span></a></nav><button class="theme-toggle" type="button" data-theme-toggle aria-label="Toggle dark mode"><svg class="sun-icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M12 17.2a5.2 5.2 0 1 0 0-10.4 5.2 5.2 0 0 0 0 10.4Zm0-14.7a1 1 0 0 1 1 1v1.2a1 1 0 1 1-2 0V3.5a1 1 0 0 1 1-1Zm0 16.8a1 1 0 0 1 1 1v1.2a1 1 0 1 1-2 0v-1.2a1 1 0 0 1 1-1Zm9.5-8.3a1 1 0 1 1 0 2h-1.2a1 1 0 1 1 0-2h1.2ZM4.7 11a1 1 0 1 1 0 2H3.5a1 1 0 1 1 0-2h1.2Zm13.74-6.44a1 1 0 0 1 0 1.42l-.85.85a1 1 0 0 1-1.42-1.42l.85-.85a1 1 0 0 1 1.42 0ZM7.83 16.17a1 1 0 0 1 0 1.42l-.85.85a1 1 0 0 1-1.42-1.42l.85-.85a1 1 0 0 1 1.42 0Zm9.76 0 .85.85a1 1 0 1 1-1.42 1.42l-.85-.85a1 1 0 0 1 1.42-1.42ZM6.98 4.56l.85.85a1 1 0 0 1-1.42 1.42l-.85-.85a1 1 0 1 1 1.42-1.42Z"></path></svg><svg class="moon-icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M21 14.58A8.2 8.2 0 0 1 9.42 3a9.25 9.25 0 1 0 11.59 11.59Z"></path></svg></button><button class="mobile-menu-toggle" type="button" data-mobile-menu-toggle aria-label="Open menu" aria-expanded="false"><svg class="mobile-menu-icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2"></path></svg><svg class="mobile-close-icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2"></path></svg></button><div class="mobile-menu" data-mobile-menu><div class="mobile-menu-card"><div class="mobile-menu-head"><span>Menu</span><button type="button" data-mobile-search-open aria-label="Search documentation"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="m20 20-4.35-4.35m2.35-5.15a7.5 7.5 0 1 1-15 0 7.5 7.5 0 0 1 15 0Z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2"></path></svg></button></div><a href="/flect/docs/">Docs</a><a href="/flect/blog/">Blog</a><a href="/flect/docs/">Get Started</a><a href="https://github.com/shravanngoswamii/flect" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 20 20" class="icon github-icon" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><g fill="none" fill-rule="evenodd"><g transform="translate(-140 -7559)" fill="currentColor"><g transform="translate(56 160)"><path d="M94,7399 C99.523,7399 104,7403.59 104,7409.253 C104,7413.782 101.138,7417.624 97.167,7418.981 C96.66,7419.082 96.48,7418.762 96.48,7418.489 C96.48,7418.151 96.492,7417.047 96.492,7415.675 C96.492,7414.719 96.172,7414.095 95.813,7413.777 C98.04,7413.523 100.38,7412.656 100.38,7408.718 C100.38,7407.598 99.992,7406.684 99.35,7405.966 C99.454,7405.707 99.797,7404.664 99.252,7403.252 C99.252,7403.252 98.414,7402.977 96.505,7404.303 C95.706,7404.076 94.85,7403.962 94,7403.958 C93.15,7403.962 92.295,7404.076 91.497,7404.303 C89.586,7402.977 88.746,7403.252 88.746,7403.252 C88.203,7404.664 88.546,7405.707 88.649,7405.966 C88.01,7406.684 87.619,7407.598 87.619,7408.718 C87.619,7412.646 89.954,7413.526 92.175,7413.785 C91.889,7414.041 91.63,7414.493 91.54,7415.156 C90.97,7415.418 89.522,7415.871 88.63,7414.304 C88.63,7414.304 88.101,7413.319 87.097,7413.247 C87.097,7413.247 86.122,7413.234 87.029,7413.87 C87.029,7413.87 87.684,7414.185 88.139,7415.37 C88.139,7415.37 88.726,7417.2 91.508,7416.58 C91.513,7417.437 91.522,7418.245 91.522,7418.489 C91.522,7418.76 91.338,7419.077 90.839,7418.982 C86.865,7417.627 84,7413.783 84,7409.253 C84,7403.59 88.478,7399 94,7399"></path></g></g></g></svg>GitHub</a><a class="nav-heart" href="https://github.com/sponsors/shravanngoswamii" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 1024 1024" class="icon heart-icon" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M927.4 273.5v-95.4h-87.9V82.8h-201v95.3h-87.9v95.4h-78.5v-95.4h-88V82.8H183.2v95.3H95.3v95.4H16.7v190.6h78.6v95.4h75.3v95.3H246v95.3h87.9v95.4h100.5v95.3h153.9v-95.3h100.4v-95.4h88v-95.3H852.1v-95.3h75.3v-95.4h78.5V273.5z" fill="#E02D2D"></path></svg>Support</a></div></div></header><div class="mobile-backdrop" data-mobile-backdrop data-pagefind-ignore></div><main data-pagefind-body><article class="blog-post"><a class="blog-back" href="/flect/blog/"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>Back to blog</a><header class="blog-post-header"><h1>Five things to change before you ship</h1><div class="blog-post-meta"><time datetime="2026-07-18T00:00:00.000Z">July 18, 2026</time></div><ul class="blog-tags"><li>guide</li></ul><p class="blog-post-description">A short checklist for making a freshly cloned Flect site look like yours instead of the demo, in roughly the order you&#39;ll actually hit them.</p></header><div class="prose"><p>A freshly cloned Flect site is, deliberately, still the demo — the sample docs, the sample accent color, the sample logo. None of that is meant to survive contact with your project. Here’s the checklist, in the order you’ll actually run into it.</p>
+<h2 id="1-srcconfigts">1. <code>src/config.ts</code></h2>
+<p>This is <code>siteConfig</code>: your name, tagline, description, GitHub URL, and theme color. It’s read by <code>BaseLayout.astro</code> for the page title, the meta description, and the Open Graph tags, so it’s worth getting right before you worry about anything visual. If you’re not using GitHub Sponsors, set <code>githubSponsorsUrl</code> to an empty string and the “Support” link in the header and footer disappears on its own — no template conditional to hunt down.</p>
+<h2 id="2-srcdatanavigationts">2. <code>src/data/navigation.ts</code></h2>
+<p>Delete the sample groups and replace them with your own. <code>navGroups</code> is a plain typed array — a list of groups, each with a title and a list of <code>{ title, href }</code> items — and it drives three things at once: the desktop sidebar, the mobile navigation panel, and (via the flattened <code>quickLinks</code> export) the footer’s quick links. Change it once here and all three update together, which is the entire reason it isn’t duplicated in three separate files.</p>
+<h2 id="3-the-logo">3. The logo</h2>
+<p><code>src/components/Logo.astro</code> and the SVGs under <code>public/</code> (<code>logo.svg</code>, <code>logo-dark.svg</code>, <code>favicon.svg</code>) are the demo mark. Swap them for your own — an SVG import into that component and matching files under <code>public/</code> is all that’s required. If you don’t have a mark yet, a plain wordmark works fine as a placeholder; the layout doesn’t assume anything about the logo’s shape.</p>
+<h2 id="4-the-accent-color">4. The accent color</h2>
+<p>Everything in <code>src/styles/global.css</code> is one file, and the colors are CSS custom properties split between <code>:root</code> (light theme) and <code>:root[data-theme="dark"]</code> (dark theme). Changing <code>--accent</code> and <code>--accent-strong</code> in both blocks re-themes the whole site — buttons, links, active nav states, the search trigger’s focus ring — because every component reads from those variables instead of hardcoding a color. One thing that’s easy to miss: <code>--accent</code> and the <code>themeColor</code> field back in <code>src/config.ts</code> are two separate values that don’t sync automatically. The CSS variable colors the page; <code>themeColor</code> only colors the browser’s own UI chrome (the address bar on mobile). Update both or they’ll drift.</p>
+<h2 id="5-base_path-and-the-deploy-workflow">5. <code>BASE_PATH</code> and the deploy workflow</h2>
+<p>If you’re deploying to GitHub Pages under a project path (<code>username.github.io/your-repo</code>), <code>astro.config.mjs</code> needs <code>base</code> set to match, and every internal link in the codebase already routes through a <code>withBase()</code> helper specifically so this works without hunting down hardcoded paths. The default workflows read <code>BASE_PATH</code> from the environment, so in the common case you’re editing one line in <code>astro.config.mjs</code> — the fallback default — and letting CI’s environment variable handle the rest. Get this wrong and the symptom is oddly specific: everything works locally, then every internal link 404s on the deployed site. If that happens, this is the first thing to check.</p>
+<p>None of these five take more than a few minutes individually. Doing them in this order just means each one builds on a working version of the last, instead of hunting down subtly broken theming after you’ve already meant to change five things at once.</p>
+</div></article></main><footer class="site-footer" data-pagefind-ignore><div class="footer-divider"></div><div class="footer-inner"><div class="footer-brand"><svg class="footer-logo" viewBox="0 0 128 128" role="img" aria-label="Flect"><path d="M40 106 L40 26" fill="none" stroke="currentColor" stroke-width="13" stroke-linecap="round"></path><path d="M40 26 L76 26" fill="none" stroke="currentColor" stroke-width="13" stroke-linecap="round"></path><path d="M40 62 L70 62" fill="none" stroke="currentColor" stroke-width="13" stroke-linecap="round"></path><path d="M76 26 Q98 26 98 48" fill="none" stroke="var(--logo-accent)" stroke-width="13" stroke-linecap="round"></path><circle cx="98" cy="48" r="7" fill="var(--logo-warn)"></circle></svg><strong>Flect</strong><span>A lightweight, fully custom Astro documentation template.</span></div><nav class="footer-nav" aria-label="Footer navigation"><a href="/flect/docs/">Introduction</a><a href="/flect/docs/start/installation/">Installation</a><a href="/flect/docs/start/quick-start/">Quick start</a><a href="/flect/docs/guides/writing-docs/">Writing docs</a></nav><div class="footer-actions"><a href="/flect/blog/">Blog</a><a class="nav-heart" href="https://github.com/sponsors/shravanngoswamii" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 1024 1024" class="icon heart-icon" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M927.4 273.5v-95.4h-87.9V82.8h-201v95.3h-87.9v95.4h-78.5v-95.4h-88V82.8H183.2v95.3H95.3v95.4H16.7v190.6h78.6v95.4h75.3v95.3H246v95.3h87.9v95.4h100.5v95.3h153.9v-95.3h100.4v-95.4h88v-95.3H852.1v-95.3h75.3v-95.4h78.5V273.5z" fill="#E02D2D"></path></svg>Support</a><a class="icon-link" href="https://github.com/shravanngoswamii/flect" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 20 20" class="icon github-icon" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><g fill="none" fill-rule="evenodd"><g transform="translate(-140 -7559)" fill="currentColor"><g transform="translate(56 160)"><path d="M94,7399 C99.523,7399 104,7403.59 104,7409.253 C104,7413.782 101.138,7417.624 97.167,7418.981 C96.66,7419.082 96.48,7418.762 96.48,7418.489 C96.48,7418.151 96.492,7417.047 96.492,7415.675 C96.492,7414.719 96.172,7414.095 95.813,7413.777 C98.04,7413.523 100.38,7412.656 100.38,7408.718 C100.38,7407.598 99.992,7406.684 99.35,7405.966 C99.454,7405.707 99.797,7404.664 99.252,7403.252 C99.252,7403.252 98.414,7402.977 96.505,7404.303 C95.706,7404.076 94.85,7403.962 94,7403.958 C93.15,7403.962 92.295,7404.076 91.497,7404.303 C89.586,7402.977 88.746,7403.252 88.746,7403.252 C88.203,7404.664 88.546,7405.707 88.649,7405.966 C88.01,7406.684 87.619,7407.598 87.619,7408.718 C87.619,7412.646 89.954,7413.526 92.175,7413.785 C91.889,7414.041 91.63,7414.493 91.54,7415.156 C90.97,7415.418 89.522,7415.871 88.63,7414.304 C88.63,7414.304 88.101,7413.319 87.097,7413.247 C87.097,7413.247 86.122,7413.234 87.029,7413.87 C87.029,7413.87 87.684,7414.185 88.139,7415.37 C88.139,7415.37 88.726,7417.2 91.508,7416.58 C91.513,7417.437 91.522,7418.245 91.522,7418.489 C91.522,7418.76 91.338,7419.077 90.839,7418.982 C86.865,7417.627 84,7413.783 84,7409.253 C84,7403.59 88.478,7399 94,7399"></path></g></g></g></svg>GitHub</a></div><p class="footer-meta">&copy; 2026 Flect</p></div></footer><script>
+			(() => {
+				const key = 'theme';
+				const root = document.documentElement;
+				const button = document.querySelector('[data-theme-toggle]');
+				const apply = (theme) => {
+					root.dataset.theme = theme;
+					button?.setAttribute('aria-pressed', String(theme === 'dark'));
+				};
+
+				button?.addEventListener('click', () => {
+					const next = root.dataset.theme === 'dark' ? 'light' : 'dark';
+					localStorage.setItem(key, next);
+					apply(next);
+				});
+
+				apply(root.dataset.theme || 'light');
+			})();
+
+			(() => {
+				const blocks = document.querySelectorAll('main pre');
+				for (const pre of blocks) {
+					if (pre.closest('.prompt-player') || pre.parentElement?.classList.contains('code-frame')) {
+						continue;
+					}
+
+					const frame = document.createElement('div');
+					frame.className = 'code-frame';
+					const button = document.createElement('button');
+					button.className = 'copy-code-button';
+					button.type = 'button';
+					button.textContent = 'Copy';
+					button.setAttribute('aria-label', 'Copy code block');
+
+					pre.parentNode?.insertBefore(frame, pre);
+					frame.append(pre, button);
+
+					button.addEventListener('click', async () => {
+						const text = pre.textContent || '';
+						try {
+							await navigator.clipboard.writeText(text);
+							button.textContent = 'Copied';
+							window.setTimeout(() => {
+								button.textContent = 'Copy';
+							}, 1300);
+						} catch {
+							button.textContent = 'Failed';
+							window.setTimeout(() => {
+								button.textContent = 'Copy';
+							}, 1300);
+						}
+					});
+				}
+			})();
+
+			(() => {
+				const header = document.querySelector('.site-header');
+				if (!header) return;
+				let lastY = window.scrollY;
+				let ticking = false;
+
+				const update = () => {
+					const y = window.scrollY;
+					if (header.classList.contains('menu-open')) {
+						lastY = y;
+						ticking = false;
+						return;
+					}
+					if (y <= 60) {
+						header.classList.remove('header-hidden');
+					} else if (y > lastY) {
+						header.classList.add('header-hidden');
+					} else {
+						header.classList.remove('header-hidden');
+					}
+					lastY = y;
+					ticking = false;
+				};
+
+				window.addEventListener('scroll', () => {
+					if (!ticking) {
+						requestAnimationFrame(update);
+						ticking = true;
+					}
+				}, { passive: true });
+			})();
+
+			(() => {
+				const header = document.querySelector('.site-header');
+				const toggle = document.querySelector('[data-mobile-menu-toggle]');
+				const backdrop = document.querySelector('[data-mobile-backdrop]');
+				const menu = document.querySelector('[data-mobile-menu]');
+				const search = document.querySelector('[data-mobile-search-open]');
+				const closeMenu = () => {
+					header?.classList.remove('menu-open');
+					toggle?.setAttribute('aria-expanded', 'false');
+				};
+				const openMenu = () => {
+					header?.classList.add('menu-open');
+					toggle?.setAttribute('aria-expanded', 'true');
+				};
+
+				toggle?.addEventListener('click', () => {
+					header?.classList.contains('menu-open') ? closeMenu() : openMenu();
+				});
+				backdrop?.addEventListener('click', closeMenu);
+				menu?.querySelectorAll('a').forEach((link) => link.addEventListener('click', closeMenu));
+				search?.addEventListener('click', () => {
+					closeMenu();
+					document.dispatchEvent(new CustomEvent('docs:open-search'));
+				});
+				document.addEventListener('keydown', (event) => {
+					if (event.key === 'Escape') closeMenu();
+				});
+			})();
+
+
+		</script></body></html>
