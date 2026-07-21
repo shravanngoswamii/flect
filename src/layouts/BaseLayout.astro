@@ -100,6 +100,7 @@ const jsonLdItems = [defaultStructuredData, ...extraStructuredData];
 			<Search />
 			<nav class="top-nav" aria-label="Main navigation">
 				<a href={withBase('/docs/')}>Docs</a>
+				<a href={withBase('/blog/')}>Blog</a>
 				<a href={withBase(navGroups[0].items[0].href)}>Get Started</a>
 				{githubSponsorsUrl && (
 					<a class="nav-heart" href={githubSponsorsUrl} target="_blank">
@@ -139,6 +140,7 @@ const jsonLdItems = [defaultStructuredData, ...extraStructuredData];
 						</button>
 					</div>
 					<a href={withBase('/docs/')}>Docs</a>
+					<a href={withBase('/blog/')}>Blog</a>
 					<a href={withBase(navGroups[0].items[0].href)}>Get Started</a>
 					<a href={siteConfig.githubUrl} target="_blank">
 						<GitHubIcon />
@@ -169,6 +171,7 @@ const jsonLdItems = [defaultStructuredData, ...extraStructuredData];
 					{quickLinks.slice(0, 4).map((link) => <a href={withBase(link.href)}>{link.title}</a>)}
 				</nav>
 				<div class="footer-actions">
+					<a href={withBase('/blog/')}>Blog</a>
 					{githubSponsorsUrl && (
 						<a class="nav-heart" href={githubSponsorsUrl} target="_blank">
 							<HeartIcon />

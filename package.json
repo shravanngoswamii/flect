@@ -24,6 +24,7 @@
 		"lint:fix": "biome check --write ."
 	},
 	"dependencies": {
+		"@astrojs/rss": "^4.0.19",
 		"@astrojs/sitemap": "^3.7.2",
 		"astro": "^7.1.3"
 	},
