@@ -1,0 +1,47 @@
+name: Docs publish
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Setup Node
+        uses: actions/setup-node@v6
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build docs
+        run: npm run build
+        env:
+          BASE_PATH: /flect/
+          PUBLIC_UMAMI_WEBSITE_ID: ${{ secrets.PUBLIC_UMAMI_WEBSITE_ID }}
+
+      - name: Post-process HTML links
+        uses: shravanngoswamii/html-link-action@v1
+        with:
+          site-dir: dist
+          noopener: true
+          noreferrer: true
+          external-target-blank: true
+
+      - name: Add .nojekyll file
+        run: touch ./dist/.nojekyll
+
+      - name: Publish docs
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: dist
+          branch: gh-pages
