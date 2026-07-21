@@ -1,5 +1,4 @@
 ---
-layout: ../../../layouts/DocsLayout.astro
 title: Search
 description: How the built-in Cmd+K search works and how it's indexed.
 ---

@@ -1,5 +1,4 @@
 ---
-layout: ../../../layouts/DocsLayout.astro
 title: Theming
 description: How the color system, dark mode toggle, and theme-color meta tag work together.
 ---

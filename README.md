@@ -59,7 +59,7 @@ Update these files first:
 
 - `src/config.ts`: site name, tagline, description, GitHub links, theme color, analytics config
 - `src/data/navigation.ts`: sidebar navigation structure
-- `src/pages/docs/*`: your documentation content, as Markdown pages
+- `docs/*`: your documentation content, as Markdown files in the `docs` content collection
 - `src/styles/global.css`: theme, typography, and color tokens
 - `public/logo-light.svg`, `public/logo-dark.svg`, `public/favicon.svg`: branding assets
 

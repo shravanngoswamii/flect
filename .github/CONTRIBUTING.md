@@ -20,7 +20,7 @@ npm run dev
 ## Pull request checklist
 
 - [ ] `npm run check:all` passes
-- [ ] Relevant docs in `src/pages/docs/` are updated
+- [ ] Relevant docs in `docs/` are updated
 - [ ] CHANGELOG.md has an entry under `[Unreleased]`
 
 ## Commit style

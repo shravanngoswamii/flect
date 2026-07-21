@@ -1,5 +1,4 @@
 ---
-layout: ../../../layouts/DocsLayout.astro
 title: Configuration reference
 description: Every field on siteConfig and the shape of the navigation data file.
 ---
@@ -21,7 +20,7 @@ Everything the template pulls from a single place lives on the exported `siteCon
 | `umami.websiteId` | Your Umami website id; reads `PUBLIC_UMAMI_WEBSITE_ID` at build time. Left empty, analytics are skipped entirely — no script tag is rendered | `""` |
 
 <div class="callout note">
-See <a href="/docs/guides/theming/">Theming</a> for how <code>themeColor</code> relates (and doesn't relate) to the CSS <code>--accent</code> variable, and <a href="/docs/reference/deployment/">Deployment</a> for how the Umami environment variables get set in CI.
+See <a href="../../guides/theming/">Theming</a> for how <code>themeColor</code> relates (and doesn't relate) to the CSS <code>--accent</code> variable, and <a href="../deployment/">Deployment</a> for how the Umami environment variables get set in CI.
 </div>
 
 ## `src/data/navigation.ts`
@@ -56,4 +55,4 @@ export const quickLinks = navGroups.flatMap((group) => group.items);
 - `navGroups` is an array of `NavGroup`s. Each group renders as a labeled section in the sidebar, and each `NavItem` renders as a link inside it.
 - `quickLinks` is derived automatically by flattening every group's items into a single list — it's used where the template needs a flat list of docs pages (for example, cross-page navigation). Don't edit `quickLinks` directly; add or remove entries in `navGroups` and it updates on its own.
 
-Adding a new docs page means adding a matching `NavItem` to the right group here — see [Writing docs](/docs/guides/writing-docs/).
+Adding a new docs page means adding a matching `NavItem` to the right group here — see [Writing docs](../../guides/writing-docs/).

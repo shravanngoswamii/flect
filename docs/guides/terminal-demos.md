@@ -1,5 +1,4 @@
 ---
-layout: ../../../layouts/DocsLayout.astro
 title: Terminal demos
 description: Play back a real terminal session in your docs using the optional PromptCast component.
 ---

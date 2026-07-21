@@ -1,5 +1,4 @@
 ---
-layout: ../../../layouts/DocsLayout.astro
 title: Installation
 description: Get the Flect template running locally in a few commands.
 ---
@@ -27,7 +26,7 @@ npm install
 npm run dev
 ```
 
-This serves the site at `http://localhost:4321`, under whichever base path is configured for local development (see [Deployment](/docs/reference/deployment/) for how `BASE_PATH` works).
+This serves the site at `http://localhost:4321`, under whichever base path is configured for local development (see [Deployment](../../reference/deployment/) for how `BASE_PATH` works).
 
 <div class="callout note">
 The dev server gives you fast refresh for content and components, but it does **not** build a search index — see the note below.

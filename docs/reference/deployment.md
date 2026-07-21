@@ -1,5 +1,4 @@
 ---
-layout: ../../../layouts/DocsLayout.astro
 title: Deployment
 description: The included GitHub Actions workflows, the BASE_PATH variable, and enabling analytics.
 ---
