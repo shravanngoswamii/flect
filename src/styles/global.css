@@ -1471,3 +1471,80 @@ pre {
 		justify-content: center;
 	}
 }
+
+.docs-pager {
+	display: flex;
+	justify-content: space-between;
+	gap: 1rem;
+	max-width: 48rem;
+	margin-top: 3rem;
+	padding-top: 1.75rem;
+	border-top: 1px solid var(--line);
+}
+
+.docs-pager-link,
+.docs-pager-placeholder {
+	flex: 1 1 0;
+	min-width: 0;
+}
+
+.docs-pager-link {
+	display: flex;
+	align-items: center;
+	gap: 0.65rem;
+	padding: 0.9rem 1.1rem;
+	border: 1px solid var(--line);
+	border-radius: 8px;
+	background: var(--surface-card);
+	text-decoration: none;
+	transition: border-color 0.15s ease;
+}
+
+.docs-pager-link:hover {
+	border-color: var(--accent);
+}
+
+.docs-pager-next {
+	justify-content: flex-end;
+	text-align: right;
+}
+
+.docs-pager-link svg {
+	flex-shrink: 0;
+	width: 1.15rem;
+	height: 1.15rem;
+	color: var(--muted);
+}
+
+.docs-pager-text {
+	display: grid;
+	gap: 0.2rem;
+	min-width: 0;
+}
+
+.docs-pager-label {
+	font-size: 0.72rem;
+	font-weight: 700;
+	text-transform: uppercase;
+	letter-spacing: 0.08em;
+	color: var(--muted);
+}
+
+.docs-pager-title {
+	overflow: hidden;
+	color: var(--text);
+	font-size: 1rem;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+@media (max-width: 640px) {
+	.docs-pager {
+		flex-direction: column;
+	}
+
+	.docs-pager-next {
+		justify-content: flex-start;
+		text-align: left;
+	}
+}
