@@ -1548,3 +1548,13 @@ pre {
 		text-align: left;
 	}
 }
+
+.toc a.active {
+	color: var(--accent-strong);
+	background: color-mix(in srgb, var(--accent) 12%, transparent);
+	box-shadow: inset 2px 0 0 var(--accent);
+	transition:
+		color 0.2s ease,
+		background 0.2s ease,
+		box-shadow 0.2s ease;
+}
