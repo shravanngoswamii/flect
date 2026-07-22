@@ -1,8 +1,37 @@
 ---
+import { Code } from "astro:components";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import PromptCast from "../components/PromptCast.astro";
 import { withBase } from "../lib/paths";
 import { siteConfig } from "../config";
+
+// The actual route that renders every docs page — shown verbatim below so
+// "no framework, no lock-in" is a file you can read, not a marketing claim.
+// The fence is interpolated rather than typed literally so this doesn't read
+// as a second frontmatter block to tooling that scans for a leading "---".
+const FRONTMATTER_FENCE = "-".repeat(3);
+const DOCS_ROUTE_SOURCE = `${FRONTMATTER_FENCE}
+import { type CollectionEntry, getCollection, render } from "astro:content";
+import DocsLayout from "../../layouts/DocsLayout.astro";
+
+export async function getStaticPaths() {
+	const entries = await getCollection("docs");
+	return entries.map((entry) => ({
+		params: { slug: entry.id === "index" ? undefined : entry.id },
+		props: entry,
+	}));
+}
+
+type Props = CollectionEntry<"docs">;
+
+const entry = Astro.props;
+const { Content, headings } = await render(entry);
+${FRONTMATTER_FENCE}
+
+<DocsLayout frontmatter={entry.data} headings={headings}>
+	<Content />
+</DocsLayout>
+`;
 
 const siteOrigin = Astro.site ?? Astro.url;
 const appUrl = new URL(withBase("/"), siteOrigin).href;
@@ -103,56 +132,27 @@ const structuredData = [
 				end-to-end — not a plugin system to configure around.
 			</p>
 		</div>
-		<div class="feature-terminal">
-			<div class="terminal-chrome">
-				<span class="chrome-dots">
-					<span></span><span></span><span></span>
-				</span>
-				<span class="chrome-title">flect — features</span>
+		<div class="code-window">
+			<div class="code-window-chrome">
+				<svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+					<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+					<path d="M14 2v6h6" />
+				</svg>
+				<span class="code-window-path">src/pages/docs/[...slug].astro</span>
 			</div>
-			<div class="feature-terminal-body">
-				<p class="feature-terminal-prompt"><span class="fx-prompt">$</span> flect --features</p>
-				<ul class="feature-terminal-list">
-					<li>
-						<span class="fx-check" aria-hidden="true">
-							<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
-								<path d="M20 6 9 17l-5-5" />
-							</svg>
-						</span>
-						<span class="fx-name">no-framework-lock-in</span>
-						<span class="fx-desc">Every page and component is plain Astro — no Starlight, no hidden abstraction to work within.</span>
-					</li>
-					<li>
-						<span class="fx-check" aria-hidden="true">
-							<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
-								<path d="M20 6 9 17l-5-5" />
-							</svg>
-						</span>
-						<span class="fx-name">instant-search</span>
-						<span class="fx-desc">Pagefind indexes your docs at build time, with a table of contents and sidebar that stay in sync.</span>
-					</li>
-					<li>
-						<span class="fx-check" aria-hidden="true">
-							<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
-								<path d="M20 6 9 17l-5-5" />
-							</svg>
-						</span>
-						<span class="fx-name">terminal-cast-demos</span>
-						<span class="fx-desc">An optional player embeds real asciinema recordings instead of static code blocks.</span>
-					</li>
-					<li>
-						<span class="fx-check" aria-hidden="true">
-							<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
-								<path d="M20 6 9 17l-5-5" />
-							</svg>
-						</span>
-						<span class="fx-name">deploy-in-one-push</span>
-						<span class="fx-desc">A GitHub Pages workflow and pull request previews are already wired up.</span>
-					</li>
-				</ul>
-				<p class="feature-terminal-summary">4 features found. 0 dependencies added.</p>
-			</div>
+			<Code
+				code={DOCS_ROUTE_SOURCE}
+				lang="astro"
+				themes={{ light: "github-light", dark: "github-dark" }}
+				defaultColor={false}
+			/>
 		</div>
+		<p class="code-window-caption">
+			That's the whole route. It reads your Markdown through a content
+			collection and hands it to a layout — <strong>no generated config, no
+			framework internals to unwind</strong> if you ever want to change how a
+			docs page renders.
+		</p>
 	</section>
 
 	<section class="section">
