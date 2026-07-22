@@ -103,44 +103,54 @@ const structuredData = [
 				end-to-end — not a plugin system to configure around.
 			</p>
 		</div>
-		<div class="feature-grid">
-			<div class="feature">
-				<span class="feature-icon" aria-hidden="true">
-					<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-						<path d="M8 6 2 12l6 6M16 6l6 6-6 6" />
-					</svg>
+		<div class="feature-terminal">
+			<div class="terminal-chrome">
+				<span class="chrome-dots">
+					<span></span><span></span><span></span>
 				</span>
-				<h3>No framework lock-in</h3>
-				<p>Every page and component is plain Astro — no Starlight, no hidden abstraction to work within.</p>
+				<span class="chrome-title">flect — features</span>
 			</div>
-			<div class="feature">
-				<span class="feature-icon" aria-hidden="true">
-					<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-						<path d="m20 20-4.35-4.35m2.35-5.15a7.5 7.5 0 1 1-15 0 7.5 7.5 0 0 1 15 0Z" />
-					</svg>
-				</span>
-				<h3>Instant search, built in</h3>
-				<p>Pagefind indexes your docs at build time, with an auto-generated table of contents and sidebar that stay in sync with your content.</p>
-			</div>
-			<div class="feature">
-				<span class="feature-icon" aria-hidden="true">
-					<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-						<rect x="3" y="4" width="18" height="16" rx="2" />
-						<path d="m7 9 3 3-3 3M13 15h4" />
-					</svg>
-				</span>
-				<h3>Built for CLI and dev-tool docs</h3>
-				<p>An optional terminal-cast player embeds real asciinema recordings, so guides can show actual command output instead of static code blocks.</p>
-			</div>
-			<div class="feature">
-				<span class="feature-icon" aria-hidden="true">
-					<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-						<path d="M7 16a4 4 0 0 1-1-7.87A5.5 5.5 0 0 1 16.5 9a4 4 0 0 1-.5 8H7Z" />
-						<path d="M12 12v6M9.5 14.5 12 12l2.5 2.5" />
-					</svg>
-				</span>
-				<h3>Deploy in one push</h3>
-				<p>A GitHub Pages workflow and pull request previews are already wired up — push to main and the docs are live.</p>
+			<div class="feature-terminal-body">
+				<p class="feature-terminal-prompt"><span class="fx-prompt">$</span> flect --features</p>
+				<ul class="feature-terminal-list">
+					<li>
+						<span class="fx-check" aria-hidden="true">
+							<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+								<path d="M20 6 9 17l-5-5" />
+							</svg>
+						</span>
+						<span class="fx-name">no-framework-lock-in</span>
+						<span class="fx-desc">Every page and component is plain Astro — no Starlight, no hidden abstraction to work within.</span>
+					</li>
+					<li>
+						<span class="fx-check" aria-hidden="true">
+							<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+								<path d="M20 6 9 17l-5-5" />
+							</svg>
+						</span>
+						<span class="fx-name">instant-search</span>
+						<span class="fx-desc">Pagefind indexes your docs at build time, with a table of contents and sidebar that stay in sync.</span>
+					</li>
+					<li>
+						<span class="fx-check" aria-hidden="true">
+							<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+								<path d="M20 6 9 17l-5-5" />
+							</svg>
+						</span>
+						<span class="fx-name">terminal-cast-demos</span>
+						<span class="fx-desc">An optional player embeds real asciinema recordings instead of static code blocks.</span>
+					</li>
+					<li>
+						<span class="fx-check" aria-hidden="true">
+							<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+								<path d="M20 6 9 17l-5-5" />
+							</svg>
+						</span>
+						<span class="fx-name">deploy-in-one-push</span>
+						<span class="fx-desc">A GitHub Pages workflow and pull request previews are already wired up.</span>
+					</li>
+				</ul>
+				<p class="feature-terminal-summary">4 features found. 0 dependencies added.</p>
 			</div>
 		</div>
 	</section>
