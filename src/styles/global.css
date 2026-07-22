@@ -1830,6 +1830,15 @@ pre {
 	line-height: 1.7;
 }
 
+.blog-index-header .blog-index-count {
+	margin-top: 1.1rem;
+	color: var(--muted);
+	font-size: 0.76rem;
+	font-weight: 700;
+	text-transform: uppercase;
+	letter-spacing: 0.08em;
+}
+
 .blog-tags {
 	display: flex;
 	flex-wrap: wrap;
@@ -1946,19 +1955,26 @@ pre {
 }
 
 .blog-card {
+	position: relative;
 	display: flex;
 	gap: 1.5rem;
-	padding: 1.75rem 0;
+	margin-left: -1.1rem;
+	padding: 1.85rem 1.1rem;
 	border-bottom: 1px solid var(--line);
-	transition: background-color 0.15s ease;
+	border-left: 3px solid transparent;
+	border-radius: 8px;
+	transition:
+		background-color 0.15s ease,
+		border-left-color 0.15s ease;
 }
 
 .blog-list .blog-card:first-child {
-	padding-top: 0;
+	padding-top: 0.75rem;
 }
 
 .blog-card:hover {
 	background: color-mix(in srgb, var(--surface-muted) 60%, transparent);
+	border-left-color: var(--accent);
 }
 
 .blog-card-thumb {
@@ -1985,10 +2001,27 @@ pre {
 	flex: 1 1 auto;
 }
 
+.blog-card-eyebrow {
+	display: inline-block;
+	margin-bottom: 0.5rem;
+	color: var(--accent-strong);
+	font-size: 0.72rem;
+	font-weight: 700;
+	text-transform: uppercase;
+	letter-spacing: 0.08em;
+	text-decoration: none;
+	width: fit-content;
+}
+
+.blog-card-eyebrow:hover {
+	text-decoration: underline;
+}
+
 .blog-card-title {
 	margin: 0;
-	font-size: 1.3rem;
-	letter-spacing: 0;
+	font-size: 1.45rem;
+	font-weight: 700;
+	letter-spacing: -0.01em;
 	line-height: 1.3;
 }
 
@@ -2001,7 +2034,8 @@ pre {
 }
 
 .blog-card-description {
-	margin: 0.55rem 0 0;
+	margin: 0.5rem 0 0;
+	max-width: 46rem;
 	color: var(--muted);
 	line-height: 1.65;
 }
@@ -2011,15 +2045,14 @@ pre {
 	flex-wrap: wrap;
 	align-items: center;
 	gap: 0.6rem;
-	margin-top: 0.9rem;
+	margin-top: 1rem;
 	color: var(--muted);
 	font-size: 0.82rem;
 }
 
 .blog-card-meta time {
-	font-weight: 700;
-	text-transform: uppercase;
-	letter-spacing: 0.06em;
+	font-weight: 600;
+	color: var(--text);
 }
 
 .blog-card-reading-time {
@@ -2037,10 +2070,6 @@ pre {
 	border-radius: 999px;
 	background: var(--muted);
 	transform: translateY(-50%);
-}
-
-.blog-card-meta .blog-tags {
-	margin: 0;
 }
 
 .blog-tags a {

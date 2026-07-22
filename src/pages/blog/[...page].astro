@@ -46,6 +46,9 @@ const description = isFirstPage
 					<h1>Blog — Page {page.currentPage}</h1>
 				)
 			}
+			<p class="blog-index-count">
+				{page.total} {page.total === 1 ? "post" : "posts"}
+			</p>
 		</header>
 		<div class="blog-list">
 			{

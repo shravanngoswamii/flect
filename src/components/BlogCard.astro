@@ -24,6 +24,10 @@ const dateFormatter = new Intl.DateTimeFormat("en-US", {
 	month: "long",
 	day: "numeric",
 });
+
+// The first tag doubles as the row's category label; the rest stay
+// discoverable from the post page itself rather than crowding the listing.
+const [eyebrow] = tags ?? [];
 ---
 
 <article class="blog-card">
@@ -39,6 +43,13 @@ const dateFormatter = new Intl.DateTimeFormat("en-US", {
 		)
 	}
 	<div class="blog-card-body">
+		{
+			eyebrow && (
+				<a class="blog-card-eyebrow" href={withBase(`/blog/tags/${slugifyTag(eyebrow)}/`)}>
+					{eyebrow}
+				</a>
+			)
+		}
 		<h2 class="blog-card-title">
 			<a href={href}>{title}</a>
 		</h2>
@@ -46,17 +57,6 @@ const dateFormatter = new Intl.DateTimeFormat("en-US", {
 		<div class="blog-card-meta">
 			<time datetime={pubDate.toISOString()}>{dateFormatter.format(pubDate)}</time>
 			<span class="blog-card-reading-time">{readingMinutes} min read</span>
-			{
-				tags && tags.length > 0 && (
-					<ul class="blog-tags">
-						{tags.map((tag) => (
-							<li>
-								<a href={withBase(`/blog/tags/${slugifyTag(tag)}/`)}>{tag}</a>
-							</li>
-						))}
-					</ul>
-				)
-			}
 		</div>
 	</div>
 </article>
