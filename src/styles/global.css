@@ -10,7 +10,13 @@
 	--accent: #14724b;
 	--accent-strong: #0c5135;
 	--amber: #b7791f;
-	--header-bg: rgba(251, 250, 247, 0.88);
+	/* tinted the same as the body's top gradient, so the sticky header reads as
+	   part of the same glow instead of a flat bar sitting on top of it */
+	--header-bg: color-mix(
+		in srgb,
+		color-mix(in srgb, var(--bg), var(--accent) 9%) 88%,
+		transparent
+	);
 	--code-bg: #f4f6f2;
 	--code-text: #151816;
 	--logo-accent: #14724b;
@@ -33,7 +39,6 @@
 	--accent: #6ee7b7;
 	--accent-strong: #dcfce7;
 	--amber: #eab308;
-	--header-bg: rgba(16, 20, 19, 0.88);
 	--code-bg: #070908;
 	--code-text: #f4f1ea;
 	--logo-accent: #6ee7b7;

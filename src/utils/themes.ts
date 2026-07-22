@@ -119,7 +119,6 @@ function buildTokens(seed: Seed): Record<string, string> {
 		"--line": format(line),
 		"--accent": format(accent),
 		"--accent-strong": format(accentStrong),
-		"--header-bg": withAlpha(bg, 0.88),
 		"--code-bg": format(surfaceMuted),
 		"--code-text": format(text),
 		"--logo-accent": format(accent),
