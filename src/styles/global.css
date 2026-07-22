@@ -809,7 +809,12 @@ pre {
 	line-height: 1.7;
 }
 
-.feature-grid,
+.feature-grid {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: 1rem;
+}
+
 .docs-grid {
 	display: grid;
 	grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -822,6 +827,34 @@ pre {
 	border: 1px solid var(--line);
 	border-radius: 8px;
 	background: var(--surface-card);
+	transition:
+		border-color 0.15s ease,
+		box-shadow 0.15s ease,
+		transform 0.15s ease;
+}
+
+.feature:hover,
+.doc-link:hover {
+	border-color: var(--accent);
+	box-shadow: 0 12px 35px color-mix(in srgb, var(--accent) 18%, transparent);
+	transform: translateY(-2px);
+}
+
+.feature-icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 2.25rem;
+	height: 2.25rem;
+	margin-bottom: 0.8rem;
+	border-radius: 8px;
+	background: color-mix(in srgb, var(--accent) 14%, transparent);
+	color: var(--accent-strong);
+}
+
+.feature-icon svg {
+	width: 1.2rem;
+	height: 1.2rem;
 }
 
 .feature h3,
@@ -840,11 +873,6 @@ pre {
 
 .doc-link {
 	text-decoration: none;
-}
-
-.doc-link:hover {
-	border-color: var(--accent);
-	box-shadow: 0 12px 35px color-mix(in srgb, var(--accent) 18%, transparent);
 }
 
 .install-strip {
