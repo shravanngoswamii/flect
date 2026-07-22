@@ -1,37 +1,8 @@
 ---
-import { Code } from "astro:components";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import PromptCast from "../components/PromptCast.astro";
 import { withBase } from "../lib/paths";
 import { siteConfig } from "../config";
-
-// The actual route that renders every docs page — shown verbatim below so
-// "no framework, no lock-in" is a file you can read, not a marketing claim.
-// The fence is interpolated rather than typed literally so this doesn't read
-// as a second frontmatter block to tooling that scans for a leading "---".
-const FRONTMATTER_FENCE = "-".repeat(3);
-const DOCS_ROUTE_SOURCE = `${FRONTMATTER_FENCE}
-import { type CollectionEntry, getCollection, render } from "astro:content";
-import DocsLayout from "../../layouts/DocsLayout.astro";
-
-export async function getStaticPaths() {
-	const entries = await getCollection("docs");
-	return entries.map((entry) => ({
-		params: { slug: entry.id === "index" ? undefined : entry.id },
-		props: entry,
-	}));
-}
-
-type Props = CollectionEntry<"docs">;
-
-const entry = Astro.props;
-const { Content, headings } = await render(entry);
-${FRONTMATTER_FENCE}
-
-<DocsLayout frontmatter={entry.data} headings={headings}>
-	<Content />
-</DocsLayout>
-`;
 
 const siteOrigin = Astro.site ?? Astro.url;
 const appUrl = new URL(withBase("/"), siteOrigin).href;
@@ -132,27 +103,21 @@ const structuredData = [
 				end-to-end — not a plugin system to configure around.
 			</p>
 		</div>
-		<div class="code-window">
-			<div class="code-window-chrome">
+		<div class="search-joke">
+			<div class="search-joke-bar">
 				<svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-					<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
-					<path d="M14 2v6h6" />
+					<path d="m20 20-4.35-4.35m2.35-5.15a7.5 7.5 0 1 1-15 0 7.5 7.5 0 0 1 15 0Z" />
 				</svg>
-				<span class="code-window-path">src/pages/docs/[...slug].astro</span>
+				<span class="search-joke-query">plugin system<span class="search-joke-caret" aria-hidden="true"></span></span>
 			</div>
-			<Code
-				code={DOCS_ROUTE_SOURCE}
-				lang="astro"
-				themes={{ light: "github-light", dark: "github-dark" }}
-				defaultColor={false}
-			/>
+			<div class="search-joke-results">
+				<p class="search-joke-headline">No results found.</p>
+				<p class="search-joke-sub">
+					There isn't one — every page here is plain Astro you can read end to
+					end.
+				</p>
+			</div>
 		</div>
-		<p class="code-window-caption">
-			That's the whole route. It reads your Markdown through a content
-			collection and hands it to a layout — <strong>no generated config, no
-			framework internals to unwind</strong> if you ever want to change how a
-			docs page renders.
-		</p>
 	</section>
 
 	<section class="section">
