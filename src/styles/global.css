@@ -327,6 +327,10 @@ pre {
 	box-shadow: var(--shadow);
 }
 
+.theme-popover[hidden] {
+	display: none;
+}
+
 .theme-segment {
 	display: grid;
 	grid-template-columns: repeat(3, 1fr);
@@ -364,6 +368,10 @@ pre {
 	grid-template-columns: repeat(2, 1fr);
 	gap: 0.5rem;
 	overflow-y: auto;
+}
+
+.theme-grid[hidden] {
+	display: none;
 }
 
 .theme-tile {

@@ -368,15 +368,22 @@ export function oppositeMode(id: string): string {
 }
 
 // Generated CSS for every non-default theme, meant to be embedded once at
-// build time (see BaseLayout.astro) — selecting a theme just sets data-theme
-// on <html> and these rules take over.
+// build time (see BaseLayout.astro) — selecting a theme just sets data-mode
+// and data-theme on <html> and these rules take over.
+//
+// The selector matches on BOTH attributes (not just data-theme) so its
+// specificity — html + two attributes — unambiguously beats the base
+// `:root[data-mode="dark"]` rule in global.css (:root + one attribute).
+// Matching data-theme alone would tie that base rule's specificity in dark
+// mode and lose the tie-break, since the base rule can appear later in the
+// cascade depending on how Vite/Astro orders the stylesheets.
 export function buildThemesCss(): string {
 	return THEMES.filter((t) => Object.keys(t.tokens).length > 0)
 		.map((t) => {
 			const body = Object.entries(t.tokens)
 				.map(([k, v]) => `\t${k}: ${v};`)
 				.join("\n");
-			return `html[data-theme="${t.id}"] {\n${body}\n}`;
+			return `html[data-mode="${t.mode}"][data-theme="${t.id}"] {\n${body}\n}`;
 		})
 		.join("\n\n");
 }
