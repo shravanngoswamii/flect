@@ -1736,11 +1736,6 @@ pre {
 	.docs-pager {
 		flex-direction: column;
 	}
-
-	.docs-pager-next {
-		justify-content: flex-start;
-		text-align: left;
-	}
 }
 
 .toc a.active {
