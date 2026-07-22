@@ -1,0 +1,62 @@
+---
+import { Image } from "astro:assets";
+import type { CollectionEntry } from "astro:content";
+import { withBase } from "../lib/paths";
+import { slugifyTag } from "../utils/slug";
+
+type BlogData = CollectionEntry<"blog">["data"];
+
+interface Props {
+	href: string;
+	title: BlogData["title"];
+	description: BlogData["description"];
+	pubDate: BlogData["pubDate"];
+	tags?: BlogData["tags"];
+	heroImage?: BlogData["heroImage"];
+	readingMinutes: number;
+}
+
+const { href, title, description, pubDate, tags, heroImage, readingMinutes } =
+	Astro.props;
+
+const dateFormatter = new Intl.DateTimeFormat("en-US", {
+	year: "numeric",
+	month: "long",
+	day: "numeric",
+});
+---
+
+<article class="blog-card">
+	{
+		heroImage && (
+			<a class="blog-card-thumb" href={href} tabindex="-1" aria-hidden="true">
+				{typeof heroImage === "string" ? (
+					<img src={heroImage} alt="" loading="lazy" />
+				) : (
+					<Image src={heroImage} alt="" width={320} />
+				)}
+			</a>
+		)
+	}
+	<div class="blog-card-body">
+		<h2 class="blog-card-title">
+			<a href={href}>{title}</a>
+		</h2>
+		<p class="blog-card-description">{description}</p>
+		<div class="blog-card-meta">
+			<time datetime={pubDate.toISOString()}>{dateFormatter.format(pubDate)}</time>
+			<span class="blog-card-reading-time">{readingMinutes} min read</span>
+			{
+				tags && tags.length > 0 && (
+					<ul class="blog-tags">
+						{tags.map((tag) => (
+							<li>
+								<a href={withBase(`/blog/tags/${slugifyTag(tag)}/`)}>{tag}</a>
+							</li>
+						))}
+					</ul>
+				)
+			}
+		</div>
+	</div>
+</article>
