@@ -7,6 +7,7 @@ import Search from "../components/Search.astro";
 import GitHubIcon from "../components/icons/GitHubIcon.astro";
 import HeartIcon from "../components/icons/HeartIcon.astro";
 import { withBase } from "../lib/paths";
+import { THEMES, buildThemesCss } from "../utils/themes";
 
 interface Props {
 	title?: string;
@@ -51,6 +52,9 @@ const extraStructuredData = Array.isArray(structuredData)
 		? [structuredData]
 		: [];
 const jsonLdItems = [defaultStructuredData, ...extraStructuredData];
+const themesCss = buildThemesCss();
+const lightThemes = THEMES.filter((t) => t.mode === "light");
+const darkThemes = THEMES.filter((t) => t.mode === "dark");
 ---
 
 <!doctype html>
@@ -82,12 +86,23 @@ const jsonLdItems = [defaultStructuredData, ...extraStructuredData];
 		)}
 		{jsonLdItems.map((item) => <script type="application/ld+json" set:html={JSON.stringify(item)}></script>)}
 		<title>{pageTitle}</title>
+		<style set:html={themesCss}></style>
 		<script is:inline>
 			(() => {
 				const key = 'theme';
-				const preferred = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-				const stored = localStorage.getItem(key);
-				document.documentElement.dataset.theme = stored || preferred;
+				const legacyMap = { light: 'flect-light', dark: 'flect-dark' };
+				let stored = localStorage.getItem(key);
+				if (stored && legacyMap[stored]) {
+					stored = legacyMap[stored];
+					localStorage.setItem(key, stored);
+				}
+				const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+				const isSystem = !stored || stored === 'system';
+				const resolved = isSystem ? (systemDark ? 'flect-dark' : 'flect-light') : stored;
+				const mode = resolved.endsWith('-dark') ? 'dark' : 'light';
+				const root = document.documentElement;
+				root.dataset.mode = mode;
+				root.dataset.theme = resolved;
 			})();
 		</script>
 	</head>
@@ -113,14 +128,78 @@ const jsonLdItems = [defaultStructuredData, ...extraStructuredData];
 					<span>GitHub</span>
 				</a>
 			</nav>
-			<button class="theme-toggle" type="button" data-theme-toggle aria-label="Toggle dark mode">
-				<svg class="sun-icon" aria-hidden="true" viewBox="0 0 24 24">
-					<path d="M12 17.2a5.2 5.2 0 1 0 0-10.4 5.2 5.2 0 0 0 0 10.4Zm0-14.7a1 1 0 0 1 1 1v1.2a1 1 0 1 1-2 0V3.5a1 1 0 0 1 1-1Zm0 16.8a1 1 0 0 1 1 1v1.2a1 1 0 1 1-2 0v-1.2a1 1 0 0 1 1-1Zm9.5-8.3a1 1 0 1 1 0 2h-1.2a1 1 0 1 1 0-2h1.2ZM4.7 11a1 1 0 1 1 0 2H3.5a1 1 0 1 1 0-2h1.2Zm13.74-6.44a1 1 0 0 1 0 1.42l-.85.85a1 1 0 0 1-1.42-1.42l.85-.85a1 1 0 0 1 1.42 0ZM7.83 16.17a1 1 0 0 1 0 1.42l-.85.85a1 1 0 0 1-1.42-1.42l.85-.85a1 1 0 0 1 1.42 0Zm9.76 0 .85.85a1 1 0 1 1-1.42 1.42l-.85-.85a1 1 0 0 1 1.42-1.42ZM6.98 4.56l.85.85a1 1 0 0 1-1.42 1.42l-.85-.85a1 1 0 1 1 1.42-1.42Z" />
-				</svg>
-				<svg class="moon-icon" aria-hidden="true" viewBox="0 0 24 24">
-					<path d="M21 14.58A8.2 8.2 0 0 1 9.42 3a9.25 9.25 0 1 0 11.59 11.59Z" />
-				</svg>
-			</button>
+			<div class="theme-picker" data-theme-picker>
+				<button class="theme-toggle" type="button" data-theme-quick-toggle aria-label="Toggle dark mode">
+					<svg class="sun-icon" aria-hidden="true" viewBox="0 0 24 24">
+						<path d="M12 17.2a5.2 5.2 0 1 0 0-10.4 5.2 5.2 0 0 0 0 10.4Zm0-14.7a1 1 0 0 1 1 1v1.2a1 1 0 1 1-2 0V3.5a1 1 0 0 1 1-1Zm0 16.8a1 1 0 0 1 1 1v1.2a1 1 0 1 1-2 0v-1.2a1 1 0 0 1 1-1Zm9.5-8.3a1 1 0 1 1 0 2h-1.2a1 1 0 1 1 0-2h1.2ZM4.7 11a1 1 0 1 1 0 2H3.5a1 1 0 1 1 0-2h1.2Zm13.74-6.44a1 1 0 0 1 0 1.42l-.85.85a1 1 0 0 1-1.42-1.42l.85-.85a1 1 0 0 1 1.42 0ZM7.83 16.17a1 1 0 0 1 0 1.42l-.85.85a1 1 0 0 1-1.42-1.42l.85-.85a1 1 0 0 1 1.42 0Zm9.76 0 .85.85a1 1 0 1 1-1.42 1.42l-.85-.85a1 1 0 0 1 1.42-1.42ZM6.98 4.56l.85.85a1 1 0 0 1-1.42 1.42l-.85-.85a1 1 0 1 1 1.42-1.42Z" />
+					</svg>
+					<svg class="moon-icon" aria-hidden="true" viewBox="0 0 24 24">
+						<path d="M21 14.58A8.2 8.2 0 0 1 9.42 3a9.25 9.25 0 1 0 11.59 11.59Z" />
+					</svg>
+				</button>
+				<button class="theme-caret" type="button" data-theme-menu-toggle aria-haspopup="menu" aria-expanded="false" aria-label="Choose theme">
+					<svg aria-hidden="true" viewBox="0 0 24 24">
+						<path d="m6 9 6 6 6-6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" />
+					</svg>
+				</button>
+				<div class="theme-popover" data-theme-popover role="menu" aria-label="Themes" hidden>
+					<div class="theme-segment" role="group" aria-label="Appearance">
+						<button type="button" class="theme-segment-btn" data-theme-segment="system">System</button>
+						<button type="button" class="theme-segment-btn" data-theme-segment="light">Light</button>
+						<button type="button" class="theme-segment-btn" data-theme-segment="dark">Dark</button>
+					</div>
+					<div class="theme-grid" data-mode-grid="light">
+						{lightThemes.map((t) => (
+							<button
+								type="button"
+								class="theme-tile"
+								role="menuitemradio"
+								data-theme-id={t.id}
+								style={`--tile-bg:${t.bg};--tile-surface:${t.surface};--tile-text:${t.text};--tile-accent:${t.swatch}`}
+							>
+								<span class="theme-tile-preview" aria-hidden="true">
+									<span class="theme-tile-card">
+										<span class="theme-tile-bar"></span>
+										<span class="theme-tile-line"></span>
+										<span class="theme-tile-line theme-tile-line-short"></span>
+									</span>
+								</span>
+								<span class="theme-tile-row">
+									<span class="theme-tile-name">{t.name}</span>
+									<svg class="theme-tile-check" aria-hidden="true" viewBox="0 0 24 24">
+										<path d="M20 6 9 17l-5-5" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" />
+									</svg>
+								</span>
+							</button>
+						))}
+					</div>
+					<div class="theme-grid" data-mode-grid="dark" hidden>
+						{darkThemes.map((t) => (
+							<button
+								type="button"
+								class="theme-tile"
+								role="menuitemradio"
+								data-theme-id={t.id}
+								style={`--tile-bg:${t.bg};--tile-surface:${t.surface};--tile-text:${t.text};--tile-accent:${t.swatch}`}
+							>
+								<span class="theme-tile-preview" aria-hidden="true">
+									<span class="theme-tile-card">
+										<span class="theme-tile-bar"></span>
+										<span class="theme-tile-line"></span>
+										<span class="theme-tile-line theme-tile-line-short"></span>
+									</span>
+								</span>
+								<span class="theme-tile-row">
+									<span class="theme-tile-name">{t.name}</span>
+									<svg class="theme-tile-check" aria-hidden="true" viewBox="0 0 24 24">
+										<path d="M20 6 9 17l-5-5" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" />
+									</svg>
+								</span>
+							</button>
+						))}
+					</div>
+				</div>
+			</div>
 			<button class="mobile-menu-toggle" type="button" data-mobile-menu-toggle aria-label="Open menu" aria-expanded="false">
 				<svg class="mobile-menu-icon" aria-hidden="true" viewBox="0 0 24 24">
 					<path d="M4 7h16M4 12h16M4 17h16" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2" />
@@ -190,23 +269,133 @@ const jsonLdItems = [defaultStructuredData, ...extraStructuredData];
 		</footer>
 		<script is:inline>
 			(() => {
-				const key = 'theme';
+				const KEY = 'theme';
 				const root = document.documentElement;
-				const button = document.querySelector('[data-theme-toggle]');
-				const apply = (theme) => {
-					root.dataset.theme = theme;
-					button?.setAttribute('aria-pressed', String(theme === 'dark'));
+				const picker = document.querySelector('[data-theme-picker]');
+				const quickToggle = document.querySelector('[data-theme-quick-toggle]');
+				const menuToggle = document.querySelector('[data-theme-menu-toggle]');
+				const popover = document.querySelector('[data-theme-popover]');
+				if (!picker || !quickToggle || !menuToggle || !popover) return;
+
+				const modeOf = (id) => (id.endsWith('-dark') ? 'dark' : 'light');
+				const familyOf = (id) => id.replace(/-(light|dark)$/, '');
+				const siblingExists = (id) => !!document.querySelector(`[data-theme-id="${id}"]`);
+
+				const readStored = () => localStorage.getItem(KEY);
+				const isSystem = () => {
+					const s = readStored();
+					return !s || s === 'system';
+				};
+				const effective = () => {
+					const s = readStored();
+					if (!s || s === 'system') {
+						return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'flect-dark' : 'flect-light';
+					}
+					return s;
 				};
 
-				button?.addEventListener('click', () => {
-					const next = root.dataset.theme === 'dark' ? 'light' : 'dark';
-					localStorage.setItem(key, next);
-					apply(next);
+				function apply(id) {
+					const mode = modeOf(id);
+					root.dataset.mode = mode;
+					root.dataset.theme = id;
+					quickToggle.setAttribute('aria-pressed', String(mode === 'dark'));
+					renderActiveStates();
+				}
+
+				function persist(id) {
+					localStorage.setItem(KEY, id);
+					apply(id);
+				}
+
+				function useSystem() {
+					localStorage.setItem(KEY, 'system');
+					apply(effective());
+				}
+
+				function toggleQuick() {
+					if (isSystem()) {
+						const dark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+						persist(dark ? 'flect-light' : 'flect-dark');
+						return;
+					}
+					const current = effective();
+					const other = modeOf(current) === 'dark' ? 'light' : 'dark';
+					const sibling = `${familyOf(current)}-${other}`;
+					persist(siblingExists(sibling) ? sibling : `flect-${other}`);
+				}
+
+				function renderActiveStates() {
+					const current = effective();
+					const system = isSystem();
+					const mode = modeOf(current);
+					popover.querySelectorAll('[data-theme-segment]').forEach((btn) => {
+						const seg = btn.dataset.themeSegment;
+						const active = system ? seg === 'system' : seg === mode;
+						btn.classList.toggle('active', active);
+					});
+					popover.querySelectorAll('.theme-tile').forEach((tile) => {
+						const active = !system && tile.dataset.themeId === current;
+						tile.classList.toggle('active', active);
+						tile.setAttribute('aria-checked', String(active));
+					});
+					popover.querySelectorAll('[data-mode-grid]').forEach((grid) => {
+						grid.hidden = grid.dataset.modeGrid !== mode;
+					});
+				}
+
+				function openPopover() {
+					popover.hidden = false;
+					menuToggle.setAttribute('aria-expanded', 'true');
+					renderActiveStates();
+					document.addEventListener('pointerdown', onDocPointer, true);
+					document.addEventListener('keydown', onKeydown);
+				}
+				function closePopover() {
+					popover.hidden = true;
+					menuToggle.setAttribute('aria-expanded', 'false');
+					document.removeEventListener('pointerdown', onDocPointer, true);
+					document.removeEventListener('keydown', onKeydown);
+				}
+				function onDocPointer(e) {
+					if (picker.contains(e.target)) return;
+					closePopover();
+				}
+				function onKeydown(e) {
+					if (e.key === 'Escape') closePopover();
+				}
+
+				quickToggle.addEventListener('click', toggleQuick);
+				menuToggle.addEventListener('click', () => {
+					popover.hidden ? openPopover() : closePopover();
+				});
+				popover.querySelectorAll('[data-theme-segment]').forEach((btn) => {
+					btn.addEventListener('click', () => {
+						const seg = btn.dataset.themeSegment;
+						if (seg === 'system') {
+							useSystem();
+							return;
+						}
+						const current = effective();
+						const family = isSystem() ? 'flect' : familyOf(current);
+						const id = `${family}-${seg}`;
+						persist(siblingExists(id) ? id : `flect-${seg}`);
+					});
+				});
+				popover.querySelectorAll('.theme-tile').forEach((tile) => {
+					tile.addEventListener('click', () => {
+						persist(tile.dataset.themeId);
+						closePopover();
+					});
 				});
 
-				apply(root.dataset.theme || 'light');
-			})();
+				window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
+					if (isSystem()) apply(effective());
+				});
 
+				apply(effective());
+			})();
+		</script>
+		<script is:inline>
 			(() => {
 				const blocks = document.querySelectorAll('main pre');
 				for (const pre of blocks) {
@@ -303,8 +492,6 @@ const jsonLdItems = [defaultStructuredData, ...extraStructuredData];
 					if (event.key === 'Escape') closeMenu();
 				});
 			})();
-
-
 		</script>
 	</body>
 </html>
