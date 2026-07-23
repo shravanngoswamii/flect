@@ -59,7 +59,7 @@ export async function generateOgImage(
 	title: string,
 	description?: string,
 ): Promise<Uint8Array> {
-	const text = [title, description ?? "", siteConfig.name, "—"].join(" ");
+	const text = [title, description ?? "", siteConfig.name].join(" ");
 	const fonts = await loadFonts(text);
 	const fontFamily = fonts.length ? "Inter" : "sans-serif";
 

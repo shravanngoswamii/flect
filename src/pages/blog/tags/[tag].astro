@@ -12,7 +12,7 @@ export const getStaticPaths = (async () => {
 	const posts = await getCollection("blog");
 
 	// Dedupe tags by their exact (case-sensitive) original string first, then
-	// slugify — two differently-cased tags that collide on slug share a page,
+	// slugify. Two differently-cased tags that collide on slug share a page,
 	// keeping the first-seen original string as the display label.
 	const uniqueTags = new Set<string>();
 	for (const post of posts) {

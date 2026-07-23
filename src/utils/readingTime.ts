@@ -7,7 +7,7 @@ export interface ReadingTime {
 
 /**
  * Estimates reading time from a raw markdown body string (content collection
- * entries expose this as `.body`). Simple word-count-over-wpm estimate — no
+ * entries expose this as `.body`). Simple word-count-over-wpm estimate: no
  * markdown parsing, just whitespace splitting.
  */
 export function getReadingTime(body: string): ReadingTime {

@@ -3,7 +3,7 @@ title: Search
 description: How the built-in Cmd+K search works and how it's indexed.
 ---
 
-Flect ships with instant search powered by [Pagefind](https://pagefind.app/) — no external search service or API key required.
+Flect ships with instant search powered by [Pagefind](https://pagefind.app/). No external search service or API key required.
 
 ## How the index is built
 
@@ -28,14 +28,14 @@ The search modal can be opened three ways:
 Two data attributes control what Pagefind picks up:
 
 - `data-pagefind-body` marks a region as indexable content. It's already set on the main docs content area, so page bodies are searchable out of the box.
-- `data-pagefind-ignore` excludes an element from the index entirely. It's already set on chrome-like regions — the header, footer, sidebar navigation, and mobile panels — so nav links and repeated UI text don't clutter search results.
+- `data-pagefind-ignore` excludes an element from the index entirely. It's already set on chrome-like regions (the header, footer, sidebar navigation, and mobile panels), so nav links and repeated UI text don't clutter search results.
 
 You generally don't need to touch either attribute unless you're adding new full-page chrome that shouldn't be searchable, or new content areas that should be.
 
 ## Trying it locally
 
 <div class="callout warning">
-Running `npm run dev` and testing the search box won't return results — there's no index yet. Build first.
+Running `npm run dev` and testing the search box won't return results: there's no index yet. Build first.
 </div>
 
 ```sh

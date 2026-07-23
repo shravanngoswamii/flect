@@ -7,7 +7,7 @@ Once the template is [installed](../installation/) and running, here's the order
 
 ## 1. Update `src/config.ts`
 
-This is the central config object (`siteConfig`). Set your site's name, tagline, description, GitHub URL, GitHub Sponsors URL, theme colors, and — if you use it — your Umami website id. See the [Configuration reference](../../reference/configuration/) for every field.
+This is the central config object (`siteConfig`). Set your site's name, tagline, description, GitHub URL, GitHub Sponsors URL, theme colors, and (if you use it) your Umami website id. See the [Configuration reference](../../reference/configuration/) for every field.
 
 ## 2. Update `src/data/navigation.ts`
 
@@ -31,5 +31,5 @@ Create a new `.md` file under `docs/`, give it the right frontmatter, and add a 
 
 ## Next steps
 
-- [Writing docs](../../guides/writing-docs/) — how routing, frontmatter, and callouts work
-- [Configuration reference](../../reference/configuration/) — every `siteConfig` field and the `navigation.ts` shape
+- [Writing docs](../../guides/writing-docs/) explains how routing, frontmatter, and callouts work.
+- [Configuration reference](../../reference/configuration/) documents every `siteConfig` field and the `navigation.ts` shape.

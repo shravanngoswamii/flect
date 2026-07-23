@@ -7,10 +7,10 @@ description: The included GitHub Actions workflows, the BASE_PATH variable, and 
 
 Two workflows under `.github/workflows/` handle deployment to GitHub Pages:
 
-- **Main-branch deploy** — runs on pushes to your main branch. It installs dependencies, runs `npm run build`, and publishes the resulting `dist/` output to the `gh-pages` branch.
-- **PR preview deploy/cleanup** — runs on pull requests. When a PR is opened or updated, it builds the site with a preview-specific base path and deploys it to a subfolder on `gh-pages` so reviewers can click through a live preview. When the PR is closed, a second job removes that preview subfolder again.
+- **Main-branch deploy** runs on pushes to your main branch. It installs dependencies, runs `npm run build`, and publishes the resulting `dist/` output to the `gh-pages` branch.
+- **PR preview deploy/cleanup** runs on pull requests. When a PR is opened or updated, it builds the site with a preview-specific base path and deploys it to a subfolder on `gh-pages` so reviewers can click through a live preview. When the PR is closed, a second job removes that preview subfolder again.
 
-Both workflows use `npm run build`, so every deploy includes a full Pagefind reindex — search works the same way on a preview deploy as it does in production.
+Both workflows use `npm run build`, so every deploy includes a full Pagefind reindex. Search works the same way on a preview deploy as it does in production.
 
 ## `BASE_PATH`
 
@@ -23,7 +23,7 @@ export default defineConfig({
 });
 ```
 
-If `BASE_PATH` isn't set, it defaults to `/flect` locally. In CI, the workflows set `BASE_PATH` explicitly — the main deploy sets it to your production base path, and the PR preview workflow sets it to a per-PR subpath so preview links don't collide with the production site or with each other.
+If `BASE_PATH` isn't set, it defaults to `/flect` locally. In CI, the workflows set `BASE_PATH` explicitly: the main deploy sets it to your production base path, and the PR preview workflow sets it to a per-PR subpath so preview links don't collide with the production site or with each other.
 
 <div class="callout note">
 If you rename the repository or change where the site is hosted, update the default in <code>astro.config.mjs</code> and the values the workflows pass for <code>BASE_PATH</code> together.
@@ -31,7 +31,7 @@ If you rename the repository or change where the site is hosted, update the defa
 
 ## Enabling analytics
 
-Umami analytics are off by default — no tracking script is committed to the repo, and `src/config.ts` reads `umami.websiteId` from the `PUBLIC_UMAMI_WEBSITE_ID` environment variable, which is empty unless you set it.
+Umami analytics are off by default. No tracking script is committed to the repo, and `src/config.ts` reads `umami.websiteId` from the `PUBLIC_UMAMI_WEBSITE_ID` environment variable, which is empty unless you set it.
 
 To turn analytics on:
 

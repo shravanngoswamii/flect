@@ -24,7 +24,7 @@ Recordings are expected to live in `public/casts/`.
 
 3. Move the resulting file into `public/casts/` in this project.
 4. Update the cast file path inside `src/components/PromptCast.astro` to point at your new file.
-5. Use `<PromptCast />` wherever you want the recording to play — a docs page or `src/pages/index.astro`.
+5. Use `<PromptCast />` wherever you want the recording to play: a docs page or `src/pages/index.astro`.
 
 ## This is entirely optional
 
@@ -36,5 +36,5 @@ If your project doesn't involve a terminal at all, there's no need to keep this 
 - Remove the `asciinema-player` dependency from `package.json` and run `npm install` again to update the lockfile.
 
 <div class="callout note">
-Nothing else in the template depends on this component — deleting it won't break search, navigation, theming, or anything else described in these docs.
+Nothing else in the template depends on this component. Deleting it won't break search, navigation, theming, or anything else described in these docs.
 </div>

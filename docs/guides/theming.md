@@ -50,8 +50,8 @@ themeColor: {
 },
 ```
 
-These two values only drive the browser's `<meta name="theme-color">` tag — the color a mobile browser uses to tint its own UI chrome (the address bar, task switcher card, etc.). They have no effect on the page's actual CSS.
+These two values only drive the browser's `<meta name="theme-color">` tag, the color a mobile browser uses to tint its own UI chrome (the address bar, task switcher card, etc.). They have no effect on the page's actual CSS.
 
 <div class="callout note">
-Because `themeColor` and the CSS `--accent` value are set in two different places, keep them in sync by hand whenever you change your accent color — update both `src/config.ts` and the `--accent` values in `src/styles/global.css` together.
+Because `themeColor` and the CSS `--accent` value are set in two different places, keep them in sync by hand whenever you change your accent color: update both `src/config.ts` and the `--accent` values in `src/styles/global.css` together.
 </div>

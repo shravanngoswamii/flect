@@ -2,7 +2,7 @@ export const siteConfig = {
 	name: "Flect",
 	tagline: "A lightweight, fully custom Astro documentation template.",
 	description:
-		"Flect is a hand-built Astro documentation template with sidebar navigation, instant search, dark mode, and optional terminal-cast demos — no framework lock-in.",
+		"Flect is a hand-built Astro documentation template with sidebar navigation, instant search, dark mode, and optional terminal-cast demos, with no framework lock-in.",
 	author: "Shravan Goswami",
 	authorUrl: "https://shravangoswami.com",
 	githubUrl: "https://github.com/shravanngoswamii/flect",

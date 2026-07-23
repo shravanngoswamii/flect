@@ -80,7 +80,7 @@ const darkThemes = THEMES.filter((t) => t.mode === "dark");
 		<meta name="theme-color" content={siteConfig.themeColor.light} media="(prefers-color-scheme: light)" />
 		<meta name="theme-color" content={siteConfig.themeColor.dark} media="(prefers-color-scheme: dark)" />
 		<link rel="icon" type="image/svg+xml" href={withBase('/favicon.svg')} />
-		<!-- Umami Analytics — set PUBLIC_UMAMI_WEBSITE_ID to enable, see src/config.ts -->
+		<!-- Umami Analytics: set PUBLIC_UMAMI_WEBSITE_ID to enable, see src/config.ts -->
 		{siteConfig.umami.websiteId && (
 			<script defer src={siteConfig.umami.src} data-website-id={siteConfig.umami.websiteId}></script>
 		)}

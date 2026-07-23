@@ -6,12 +6,12 @@
 </p>
 
 <p align="center">
-	A docs template with no plugin system, no theme to fight, and no "eject" button — because there's nothing to eject from.
+	A docs template with no plugin system, no theme to fight, and no "eject" button, because there's nothing to eject from.
 </p>
 
 ## Why
 
-Starlight and Docusaurus give you a framework: a plugin API to learn, a theme you'll spend a weekend un-styling, components you can't quite reach. Flect gives you an afternoon of reading instead — sidebar, search, theming, code blocks, OG images, all hand-written, all sitting right there in `src/`.
+Starlight and Docusaurus give you a framework: a plugin API to learn, a theme you'll spend a weekend un-styling, components you can't quite reach. Flect gives you an afternoon of reading instead: sidebar, search, theming, code blocks, OG images, all hand-written, all sitting right there in `src/`.
 
 ## What's in the box
 
@@ -49,15 +49,15 @@ npm run dev
 
 Start here:
 
-- `src/config.ts` — name, tagline, description, GitHub links, theme color, analytics
-- `src/data/navigation.ts` — sidebar structure
-- `docs/*` — your actual docs, as Markdown
-- `src/styles/global.css` — every color, font, and spacing token
-- `public/logo-light.svg`, `public/logo-dark.svg`, `public/favicon.svg` — swap these out, please, don't ship mine
+- `src/config.ts`: name, tagline, description, GitHub links, theme color, analytics
+- `src/data/navigation.ts`: sidebar structure
+- `docs/*`: your actual docs, as Markdown
+- `src/styles/global.css`: every color, font, and spacing token
+- `public/logo-light.svg`, `public/logo-dark.svg`, `public/favicon.svg`: swap these out, please, don't ship mine
 
 ## Analytics (optional)
 
-[Umami](https://umami.is) is wired in and silent until you give it an ID — nothing is tracked by default:
+[Umami](https://umami.is) is wired in and silent until you give it an ID. Nothing is tracked by default:
 
 - Locally: add `PUBLIC_UMAMI_WEBSITE_ID=your-id` to a `.env` file.
 - On GitHub Pages: add it as an Actions secret/variable, passed through to the build.
@@ -82,8 +82,8 @@ Base path defaults to `/flect` (`BASE_PATH` in `astro.config.mjs`); PR previews 
 
 ## Feedback
 
-Found a bug, want a feature, or just want to say hi — [open an issue](https://github.com/shravanngoswamii/flect/issues) or [email me](mailto:contact@shravangoswami.com).
+Found a bug, want a feature, or just want to say hi? [Open an issue](https://github.com/shravanngoswamii/flect/issues) or [email me](mailto:contact@shravangoswami.com).
 
 ## License
 
-MIT © 2026 [Shravan Goswami](https://shravangoswami.com) — see [LICENSE](LICENSE).
+MIT © 2026 [Shravan Goswami](https://shravangoswami.com). See [LICENSE](LICENSE).
