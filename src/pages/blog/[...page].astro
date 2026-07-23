@@ -24,10 +24,10 @@ interface Props {
 
 const { page } = Astro.props;
 const isFirstPage = page.currentPage === 1;
-const title = isFirstPage ? "Blog" : `Blog — Page ${page.currentPage}`;
+const title = isFirstPage ? "Blog" : `Blog: Page ${page.currentPage}`;
 const description = isFirstPage
 	? `Announcements, guides, and notes on building ${siteConfig.name}.`
-	: `Page ${page.currentPage} of ${page.lastPage} — announcements, guides, and notes on building ${siteConfig.name}.`;
+	: `Page ${page.currentPage} of ${page.lastPage} of announcements, guides, and notes on building ${siteConfig.name}.`;
 ---
 
 <BaseLayout title={title} description={description}>
@@ -38,12 +38,12 @@ const description = isFirstPage
 					<>
 						<h1>Blog</h1>
 						<p>
-							Announcements, guides, and the thinking behind {siteConfig.name} — written the
+							Announcements, guides, and the thinking behind {siteConfig.name}, written the
 							same way the docs are.
 						</p>
 					</>
 				) : (
-					<h1>Blog — Page {page.currentPage}</h1>
+					<h1>Blog: Page {page.currentPage}</h1>
 				)
 			}
 			<p class="blog-index-count">
@@ -52,7 +52,7 @@ const description = isFirstPage
 		</header>
 		<div class="blog-list">
 			{
-				page.data.map((post) => (
+				page.data.map((post, index) => (
 					<BlogCard
 						href={withBase(`/blog/${post.id}/`)}
 						title={post.data.title}
@@ -61,6 +61,7 @@ const description = isFirstPage
 						tags={post.data.tags}
 						heroImage={post.data.heroImage}
 						readingMinutes={getReadingTime(post.body ?? "").minutes}
+						featured={isFirstPage && index === 0}
 					/>
 				))
 			}
