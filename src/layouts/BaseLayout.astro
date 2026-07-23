@@ -263,7 +263,8 @@ const darkThemes = THEMES.filter((t) => t.mode === "dark");
 					</a>
 				</div>
 				<p class="footer-meta">
-					&copy; {new Date().getFullYear()} {siteConfig.name}
+					&copy; {new Date().getFullYear()}{' '}
+					<a href={siteConfig.authorUrl} target="_blank">{siteConfig.author}</a>
 				</p>
 			</div>
 		</footer>
