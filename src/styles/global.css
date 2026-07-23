@@ -1799,7 +1799,6 @@ pre {
 	display: flex;
 	justify-content: space-between;
 	gap: 1rem;
-	max-width: 48rem;
 	margin-top: 3rem;
 	padding-top: 1.75rem;
 	border-top: 1px solid var(--line);
