@@ -1442,7 +1442,6 @@ pre {
 }
 
 .prose {
-	max-width: 48rem;
 	line-height: 1.75;
 }
 
@@ -1460,6 +1459,19 @@ pre {
 .prose p,
 .prose li {
 	color: var(--muted);
+}
+
+.prose p {
+	text-align: justify;
+	text-wrap: pretty;
+	hyphens: auto;
+	hyphenate-limit-chars: 7 4 3;
+}
+
+/* Long unbreakable code tokens force huge word gaps under justification, so
+   paragraphs containing inline code fall back to ragged-right. */
+.prose p:has(code) {
+	text-align: left;
 }
 
 .prose a {
