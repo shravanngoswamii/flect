@@ -900,7 +900,9 @@ pre {
 
 .section-header {
 	max-width: 42rem;
+	margin-inline: auto;
 	margin-bottom: 1.5rem;
+	text-align: center;
 }
 
 .section-header h2 {
