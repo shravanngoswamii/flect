@@ -17,7 +17,7 @@ Starlight and Docusaurus give you a framework: a plugin API to learn, a theme yo
 
 - Sidebar nav with an auto-generated table of contents
 - Instant search via Pagefind (`Cmd+K` / `Ctrl+K`)
-- Dark/light plus 36 themes, remembered across visits
+- Dark/light plus 40+ themes, every one available in both modes, remembered across visits
 - Copy-to-clipboard code blocks that match whatever theme is active
 - Satori-generated OG images at build time
 - JSON-LD structured data, so search engines get more than a wall of text
