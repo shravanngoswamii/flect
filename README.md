@@ -32,8 +32,6 @@ npm install
 npm run dev
 ```
 
-Open http://localhost:4321/flect and it's already running.
-
 ## Commands
 
 | Command | Description |
