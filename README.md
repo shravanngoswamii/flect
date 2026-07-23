@@ -1,44 +1,38 @@
-<h1 align="center">Flect</h1>
-
 <p align="center">
-	A lightweight, fully custom Astro documentation template — no framework lock-in, just the components you own.
+	<picture>
+		<source media="(prefers-color-scheme: dark)" srcset="public/logo-dark.svg">
+		<img alt="Flect" src="public/logo-light.svg" width="220">
+	</picture>
 </p>
 
-## Why This Template
+<p align="center">
+	A docs template with no plugin system, no theme to fight, and no "eject" button — because there's nothing to eject from.
+</p>
 
-Most docs sites reach for a framework like Starlight or Docusaurus and inherit everything that comes with it: a plugin system to learn, a theme to fight, and components you don't fully control.
+## Why
 
-Flect is the opposite bet. It started as the hand-built docs site for a Rust CLI, and it's every component written from scratch — sidebar, search, theming, code blocks, OG images — with nothing hidden behind a framework abstraction. You get:
+Starlight and Docusaurus give you a framework: a plugin API to learn, a theme you'll spend a weekend un-styling, components you can't quite reach. Flect gives you an afternoon of reading instead — sidebar, search, theming, code blocks, OG images, all hand-written, all sitting right there in `src/`.
 
-- No framework lock-in — it's Astro pages and components you can read top to bottom in an afternoon
-- Full control over markup, styling, and behavior of every piece
-- Search, theming, and deployment still ship out of the box, so you're not rebuilding the basics
+## What's in the box
 
-## What You Get
-
-- Sidebar navigation with an auto-generated table of contents
-- Pagefind-powered instant search (`Cmd+K` / `Ctrl+K`)
-- Dark/light theme with persisted user preference
-- Responsive mobile navigation
-- Copy-to-clipboard code blocks
+- Sidebar nav with an auto-generated table of contents
+- Instant search via Pagefind (`Cmd+K` / `Ctrl+K`)
+- Dark/light plus 36 themes, remembered across visits
+- Copy-to-clipboard code blocks that match whatever theme is active
 - Satori-generated OG images at build time
-- JSON-LD structured data (breadcrumb and FAQ schema) for richer search results
-- Optional asciinema terminal-cast player for recorded CLI demos
-- GitHub Pages deployment workflow, with PR preview deploys
+- JSON-LD structured data, so search engines get more than a wall of text
+- An optional asciinema player for recorded terminal demos
+- GitHub Pages deploy workflow with PR previews, already wired up
 - Biome for linting and formatting
 
-## Quick Start
-
-1. Clone the repository.
-2. Install dependencies.
-3. Run the dev server.
+## Quick start
 
 ```bash
 npm install
 npm run dev
 ```
 
-Then open http://localhost:4321/flect
+Open http://localhost:4321/flect and it's already running.
 
 ## Commands
 
@@ -53,51 +47,33 @@ Then open http://localhost:4321/flect
 | `npm run format` | Format the codebase with Biome |
 | `npm run lint` | Lint with Biome |
 
-## Customization Guide
+## Making it yours
 
-Update these files first:
+Start here:
 
-- `src/config.ts`: site name, tagline, description, GitHub links, theme color, analytics config
-- `src/data/navigation.ts`: sidebar navigation structure
-- `docs/*`: your documentation content, as Markdown files in the `docs` content collection
-- `src/styles/global.css`: theme, typography, and color tokens
-- `public/logo-light.svg`, `public/logo-dark.svg`, `public/favicon.svg`: branding assets
+- `src/config.ts` — name, tagline, description, GitHub links, theme color, analytics
+- `src/data/navigation.ts` — sidebar structure
+- `docs/*` — your actual docs, as Markdown
+- `src/styles/global.css` — every color, font, and spacing token
+- `public/logo-light.svg`, `public/logo-dark.svg`, `public/favicon.svg` — swap these out, please, don't ship mine
 
 ## Analytics (optional)
 
-[Umami](https://umami.is) analytics is built in and disabled by default — no tracking ID is committed. To enable it, set the `PUBLIC_UMAMI_WEBSITE_ID` environment variable to your own Umami website ID:
+[Umami](https://umami.is) is wired in and silent until you give it an ID — nothing is tracked by default:
 
 - Locally: add `PUBLIC_UMAMI_WEBSITE_ID=your-id` to a `.env` file.
 - On GitHub Pages: add it as an Actions secret/variable, passed through to the build.
 
-Self-hosting Umami? Override the script URL with `PUBLIC_UMAMI_SRC`. Leave the ID unset to keep analytics off.
+Self-hosting Umami? Point elsewhere with `PUBLIC_UMAMI_SRC`. Leave the ID unset and it just doesn't run.
 
 ## Deployment
 
-This repo is ready for GitHub Pages.
+Ready for GitHub Pages out of the box.
 
-- `main` branch deploys via the publish workflow under `.github/workflows/`
-- Pull requests deploy preview sites under `pr-previews/<PR_NUMBER>` via the preview workflow under `.github/workflows/`
+- `main` deploys via the publish workflow under `.github/workflows/`
+- Pull requests get a preview under `pr-previews/<PR_NUMBER>` via the preview workflow
 
-Base path defaults to `/flect` (configured in `astro.config.mjs` via the `BASE_PATH` environment variable), and PR previews build with `BASE_PATH` set to `/flect/pr-previews/<PR_NUMBER>/`.
-
-## Project Structure
-
-```text
-src/
-	components/      Reusable UI components (nav, search, TOC, code blocks)
-	data/            Navigation structure
-	layouts/         Base and docs page layouts
-	lib/             Shared helpers (paths, etc.)
-	pages/           Route files, including og.png.ts and robots.txt.ts
-	pages/docs/      Markdown documentation pages (routed automatically)
-	styles/          Global styles and theme tokens
-	types/           Ambient type declarations
-	utils/           Utility helpers (OG image generation, etc.)
-public/
-	casts/           asciinema recordings for the terminal-cast player
-	logo-light.svg, logo-dark.svg, favicon.svg   Branding assets
-```
+Base path defaults to `/flect` (`BASE_PATH` in `astro.config.mjs`); PR previews build with it set to `/flect/pr-previews/<PR_NUMBER>/`.
 
 ## Community
 
@@ -106,10 +82,10 @@ public/
 - Security policy: [.github/SECURITY.md](.github/SECURITY.md)
 - Pull request template: [.github/PULL_REQUEST_TEMPLATE.md](.github/PULL_REQUEST_TEMPLATE.md)
 
-## Feedback & Suggestions
+## Feedback
 
-If you have any suggestions/feedback, you can contact me via [my email](contact@shravangoswami.com). Alternatively, feel free to open an issue if you find bugs or want to request new features.
+Found a bug, want a feature, or just want to say hi — [open an issue](https://github.com/shravanngoswamii/flect/issues) or [email me](mailto:contact@shravangoswami.com).
 
 ## License
 
-Licensed under the MIT [LICENSE](LICENSE), Copyright © 2026
+MIT © 2026 [Shravan Goswami](https://shravangoswami.com) — see [LICENSE](LICENSE).
